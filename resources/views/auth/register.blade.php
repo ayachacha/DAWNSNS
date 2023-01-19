@@ -9,13 +9,13 @@
 {{ Form::label('username') }}
 {{ Form::text('username',null,['class' => 'input']) }}
 
-{{ Form::label('mailaddress') }}
+{{ Form::label('mail address') }}
 {{ Form::text('mail',null,['class' => 'input']) }}
 
 {{ Form::label('password') }}
 {{ Form::text('password',null,['class' => 'input']) }}
 
-{{ Form::label('passwordconfirm') }}
+{{ Form::label('password confirm') }}
 {{ Form::text('password_confirmation',null,['class' => 'input']) }}
 
 {{ Form::submit('登録') }}
