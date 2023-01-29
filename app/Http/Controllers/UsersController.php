@@ -19,8 +19,8 @@ class UsersController extends Controller
         $query = User::query();
 
         //もし検索フォームにキーワードが入力されたら
-        if($keyword = request('keyword')){
-            $query->where('username', 'LIKE', '%{$keywords}%');
+        if(!empty($keyword)){
+            $query->where('username', 'like', '%'.$keyword.'%');
         }
         $posts =$query->get();
 

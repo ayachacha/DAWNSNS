@@ -1,12 +1,13 @@
 @extends('layouts.login')
 
 @section('content')
+<!-- 検索フォーム -->
 <form action="{{ url('/search') }}" method="GET">
   {{ csrf_field() }}
   {{ method_field('get') }}
   <div class="form-group">
     <labe>名前</labe>
-    <input type="search" class="form-control col-md-5" placeholder="ユーザー名" name="name" value="{{request('keyword')}}">
+    <input type="text" class="form-control col-md-5" placeholder="ユーザー名" name="keyword" value="{{$keyword}}">
   </div>
 
   <button type="submit" class="btn btn-primary col-md-5">検索</button>
