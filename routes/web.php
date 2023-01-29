@@ -35,14 +35,12 @@ Route::get('/logout','Auth\LoginController@logout');
 Route::get('/top','PostsController@index');
 
 Route::post('/post/create','PostsController@create');
-Route::post('/post', 'PostController@index');
-
 Route::post('/post/update','PostsController@update');
 Route::get('/post/{id}/delete','PostsController@delete');
 
 Route::get('/profile','UsersController@profile');
 
-Route::get('/search','UsersController@index');
+Route::get('/search','UsersController@search');
 
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');

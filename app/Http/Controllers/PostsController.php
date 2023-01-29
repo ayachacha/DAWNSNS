@@ -16,6 +16,7 @@ class PostsController extends Controller
         return view('posts.index',['posts'=>$posts]);
     }
 
+    //新規投稿
     public function create(Request $request){
         $post = $request->input('newPost');
         $id = Auth::id();
@@ -28,6 +29,7 @@ class PostsController extends Controller
 
     }
 
+    //投稿内容の更新
     public function update(Request $request){
         $post = $request->input('updatePost');
         $id = $request->input('id');
@@ -41,6 +43,7 @@ class PostsController extends Controller
         return redirect('/top');
     }
 
+    //投稿の削除
     public function delete($id){
         DB::table('posts')
             ->where('id', $id)
