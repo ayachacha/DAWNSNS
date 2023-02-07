@@ -2,10 +2,9 @@
 
 @section('content')
 
-@foreach($users as $user)
+@foreach($follows as $follow)
 <div>
-  <div>{{ $user->username }}</div>
-  <button onclick = "follow({{ $user->id}} )">フォローする</button>
+  <div>{{ $follow->follow }}</div>
 </div>
 @endforeach
 

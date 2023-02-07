@@ -25,10 +25,12 @@
                     {!! Form::open(['url' => 'post/update']) !!}
                         {!! Form::input('text', 'updatePost', $post->posts, ['required', 'class' => 'form-control']) !!}
                         {!! Form::input('hidden', 'id', $post->id, ['required', 'class' => 'form-control']) !!}
-                            <button type="submit" class="btn btn-success pull-right">更新</button>
+                            <input type="image" class="btn btn-success pull-right" src="images/edit.png" alt="更新"></input>
                     {!! Form::close() !!}
                 </td>
-                <td><a class="btn btn-danger" href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらのつぶやきを削除します。よろしいでしょうか？')">削除</a></td>
+                <td>
+                    <input type="image" class="btn btn-danger" href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらのつぶやきを削除します。よろしいでしょうか？')" src="images/trash.png" alt="削除"></input>
+                </td>
             </tr>
             @endforeach
         </table>

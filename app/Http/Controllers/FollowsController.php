@@ -10,17 +10,17 @@ use Auth;
 
 class FollowsController extends Controller
 {
+    //
     public function followList(){
-        $users = User::all();
+        $follows = Follow::where('follower', '=', Auth::user()->id)->get();
 
-        //followsList,blade.phpに usersを返す
-        return view('follows.followList', compact('users'));
+        //followsList,blade.phpに返す
+        return view('follows.followList', compact('follows'));
     }
 
     public function followerList(){
         return view('follows.followerList');
     }
-
 
     //フォローする　
     public function create(Request $request){

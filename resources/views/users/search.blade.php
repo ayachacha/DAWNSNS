@@ -2,9 +2,7 @@
 
 @section('content')
 <!-- 検索フォーム -->
-<form action="{{ url('/search') }}" method="GET">
-  {{ csrf_field() }}
-  {{ method_field('get') }}
+<form action="/search">
   <div class="form-group">
     <labe>名前</labe>
     <input type="text" class="form-control col-md-5" placeholder="ユーザー名" name="keyword" value="{{$keyword}}">
@@ -26,12 +24,12 @@
   </tr>
   <!-- もし$auth（ログイン者のID）とユーザーのIDが同じだったら、ボタンを表示しないようにする -->
   @if($auth != $user->id)
-  <!-- followsテーブルのfollower（ログイン者）の中でfollowのカラムにあるユーザーIDが含まれていると・・・ -->
+  <!-- followsテーブルのfollower（ログイン者）でfollowのカラムにあるユーザーIDが含まれてたら外すボタン -->
   @if($followings->contains('follow', $user->id))
   <tr>
     <td>
       <form action="/follow/delete" method="POST">
-        <!-- POST送信したいときはformタグ inputのname属性のものが変数として$Requestに送られていく-->
+        <!-- POST送信したいときはformタグ inputのname属性のものが変数として$requestに送られていく-->
         @csrf
         <input type="hidden" value="{{$user->id}}" name="id">
         <input type="submit" value="フォローをはずす">
