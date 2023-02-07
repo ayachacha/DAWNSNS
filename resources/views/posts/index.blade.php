@@ -1,13 +1,13 @@
 @extends('layouts.login')
 
 @section('content')
-<h2>機能を実装していきましょう。</h2>
+<!-- <h2>機能を実装していきましょう。</h2> -->
 
 {!! Form::open(['url' => 'post/create']) !!}
         <div class="form-group">
-            {!! Form::input('text', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容']) !!}
+            {!! Form::input('text', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => '何をつぶやこうか…？']) !!}
         </div>
-        <button type="submit" class="btn btn-success pull-right">追加</button>
+        <input type="image" class="btn btn-success pull-right" src="images/post.png" alt="投稿"></input>
         {!! Form::close() !!}
 
  <table class='table table-hover'>
@@ -29,7 +29,7 @@
                     {!! Form::close() !!}
                 </td>
                 <td>
-                    <input type="image" class="btn btn-danger" href="/post/{{ $post->id }}/delete" onclick="return confirm('こちらのつぶやきを削除します。よろしいでしょうか？')" src="images/trash.png" alt="削除"></input>
+                    <input type="image" class="btn btn-danger" href="/post/{{ $post->id }}/delete" onclick="return confirm('このつぶやきを削除します。よろしいでしょうか？')" src="images/trash.png" alt="削除"></input>
                 </td>
             </tr>
             @endforeach
