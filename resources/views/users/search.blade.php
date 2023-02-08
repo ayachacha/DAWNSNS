@@ -16,6 +16,7 @@
   <tr>
     <th>ユーザー名</th>
   </tr>
+
   <!-- ユーザー名一覧を出力する -->
   <!-- UsersController.phpから受け取った$usersを使う -->
   @foreach($users as $user)
