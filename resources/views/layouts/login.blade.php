@@ -24,20 +24,24 @@
         <div id = "head">
         <h1><a href="/top"><img src="images/main_logo.png"></a></h1>
             <div id="">
-                <div id="">
+                <div id="menu-btn">
                     @if (Auth::check())
-                    <p>{{ Auth::user()->username }}さん
-                    <img src="{{ asset('/storage/' . Auth::user()->images) }}"></p>
+                    <span class="header-username">{{ Auth::user()->username }}さん</span>
+                    <span class="header-arrow"></span>
+                    <img src="{{ asset('/storage/' . Auth::user()->images) }}">
                     @endif
-                <div>
-                <ul>
-                    <li><a href="/top">ホーム</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="/logout">ログアウト</a></li>
-                </ul>
+                </div>
+                <nav class="menu">
+                    <ul>
+                        <li><a href="/top">ホーム</a></li>
+                        <li><a href="/profile">プロフィール</a></li>
+                        <li><a href="/logout">ログアウト</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </header>
+
     <div id="row">
         <div id="container">
             @yield('content')

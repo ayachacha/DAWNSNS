@@ -23,6 +23,7 @@ class UsersController extends Controller
 
     //プロフィール更新
     public function profileUpdate(Request $request){
+        //バリデーション
         $request->validate([
             'username' => ['required', 'string', 'max:255'],
             'mail' => ['required', 'string', 'email', 'max:255', Rule::unique('users','mail')->ignore(Auth::id('mail'))],
@@ -36,13 +37,14 @@ class UsersController extends Controller
             'mail.unique' => 'メールアドレスが重複してます',
             'newPassword.min' => '4文字以上で入力してください',
         ]);
-
+        //ユーザー情報入力されたものを受け取る
         $username = $request->input('username');
         $mail = $request->input('mail');
         $newPassword = $request->input('newPassword');
         $bio = $request->input('bio');
         $iconImage = $request->file('icon-image');
 
+        //ユーザー名・メールアドレス・プロフィールの更新
         DB::table('users')
             ->where('id', Auth::id())
             ->update([
@@ -53,6 +55,7 @@ class UsersController extends Controller
                 // 'images' => $iconImage
             ]);
 
+            //パスワードが入力されたら更新する
             if(isset($newPassword)){
                 DB::table('users')
                     ->where('id', Auth::id())
@@ -61,6 +64,7 @@ class UsersController extends Controller
                     ]);
             }
 
+            //アイコン画像画添付されたら更新する
             if(isset($iconImage)){
                 DB::table('users')
                     ->where('id', Auth::id())
