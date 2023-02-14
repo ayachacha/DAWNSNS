@@ -97,4 +97,20 @@ class UsersController extends Controller
         //search.blade.phpに変数として渡す
         return view('users.search', compact('users', 'keyword', 'followings', 'auth'));
     }
+
+    public function otherProfile($id){
+        $user = DB::table('users')
+        ->where('id', $id)->first();
+        $posts = DB::table('posts')
+        ->join('users','posts.user_id','=','users.id')
+        ->where('posts.user_id', $id)
+        ->select('users.username', 'users.images','posts.posts','posts.created_at as created_at')
+        ->get();
+
+        $followings = DB::table('follows')
+        ->where('follower', Auth::id())
+        ->get();
+
+        return view('users.otherprofile', compact('user', 'posts','followings'));
+    }
 }

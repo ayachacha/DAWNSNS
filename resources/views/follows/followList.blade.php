@@ -6,7 +6,7 @@
 @foreach($follows as $follow)
 <tr>
   <!-- <td>{{$follow->username}}</td> -->
-  <td><img src="{{asset('storage/'. $follow->images)}}" alt="アイコン画像"></td>
+  <td><a href="/profile/{{$follow->id}}"><img src="{{asset('storage/'. $follow->images)}}" alt="アイコン画像"></a></td>
 </tr>
 @endforeach
 
@@ -18,7 +18,7 @@
   <td><img src="{{asset('storage/'. $post->images)}}" alt="アイコン画像"></td>
   <td>{{$post->username}}</td>
   <td>{{$post->posts}}</td>
-  <!-- <td>{{$post->created_at}}</td> -->
+  <td>{{$post->created_at}}</td>
   </br>
 </tr>
 @endforeach

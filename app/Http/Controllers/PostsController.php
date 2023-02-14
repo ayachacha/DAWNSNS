@@ -22,7 +22,8 @@ class PostsController extends Controller
         $id = Auth::id();
         DB::table('posts')->insert([
             'posts' => $post,
-            'user_id' => $id
+            'user_id' => $id,
+            'created_at' => now()
         ]);
 
         return redirect('/top');
