@@ -18,6 +18,7 @@ class FollowsController extends Controller
         ->get();
         // dd($follows);
 
+        //フォローしているユーザーの投稿
         $posts = Post::join('follows', 'follows.follow', '=', 'posts.user_id')
         ->join('users', 'users.id', '=', 'posts.user_id')
         ->where('follows.follower', '=', Auth::user()->id)
@@ -31,7 +32,17 @@ class FollowsController extends Controller
 
     //フォロワーリスト（ログイン者のことをフォローしているユーザーの一覧）
     public function followerList(){
-        return view('follows.followerList');
+        //フォロワーリスト（ログイン者のことをフォローしているユーザーの一覧）
+        $followers = User::join('follows', 'users.id', '=', 'follows.follower')
+        ->where('follows.follow', '=', Auth::user()->id)
+        ->get();
+
+        $posts = Post::join('follows', 'follows.follower', '=', 'posts.user_id')
+        ->join('users', 'users.id', '=', 'posts.user_id')
+        ->where('follows.follow', '=', Auth::user()->id)
+        ->get();
+
+        return view('follows.followerList', compact('followers','posts'));
     }
 
     //フォローする　
