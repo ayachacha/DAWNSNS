@@ -23,3 +23,152 @@ header {
     flex: 0 0 19%;
     border-left: 1px solid #6C6C6C;
 }
+
+/* アイコン丸くする */
+.icon-image img {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+img {
+    padding: 10px;
+}
+
+/* ヘッダー　アコーディオンメニュー */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.accordion-menu {
+    display: flex;
+    justify-content: space-between;
+}
+
+.accordion-content {
+    display: none;
+    position: absolute;
+    top: 125px;
+    right: 0;
+}
+
+.accordion-open {
+    color: #fff;
+    font-size: 20px;
+    position: relative;
+    padding-right: 50px;
+    margin-top: 20px;
+}
+
+
+.accordion-list a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 70px;
+    border-bottom: 1px solid #6C6C6C;
+    position: relative;
+}
+
+.accordion-list a:hover {
+    background-color: #ee6e4f;
+}
+
+.accordion-open::before {
+    content: "＋";
+    position: absolute;
+    right: 20px;
+    top: 0;
+
+}
+
+.accordion-open.active::before {
+    content: "－";
+}
+
+
+/* トップページ 投稿部分*/
+.form-group {
+    border-bottom: 3px solid #D3D3D3;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 投稿編集・削除の部分 */
+.posts-group {
+    border-bottom: 1px solid #D3D3D3;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.post-content {
+    display: flex;
+    flex-wrap: nowrap;
+
+}
+
+/* サイドバー */
+.btn {
+    display: inline-block;
+    text-align: center;
+    width: 80%;
+    background: #3C4767;
+    color: #fff;
+    padding: 10px;
+    margin: 10px 30px;
+}
+
+.follow-number {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+/* プロフィール */
+.profile {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 200px;
+    margin: auto;
+}
+
+/* フォローリスト・フォロワーリスト */
+.icon-list {
+    border-bottom: 3px solid #D3D3D3;
+}
+
+.title {
+    font-size: 25px;
+}
+
+.other-profile {
+    border-bottom: 3px solid #D3D3D3;
+}
+
+
+.submit-btn-in {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    background: #377dc3;
+    color: #fff;
+    padding: 10px;
+    margin: 10px 30px;
+    width: 30%;
+}
+
+.submit-btn-out {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    background: #c3373d;
+    color: #fff;
+    padding: 10px;
+    margin: 10px 30px;
+    width: 30%;
+}

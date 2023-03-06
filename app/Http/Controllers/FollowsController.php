@@ -37,11 +37,13 @@ class FollowsController extends Controller
         //フォロワーリスト（ログイン者のことをフォローしているユーザーの一覧）
         $followers = User::join('follows', 'users.id', '=', 'follows.follower')
         ->where('follows.follow', '=', Auth::user()->id)
+        ->select('users.id', 'users.images')
         ->get();
 
         $posts = Post::join('follows', 'follows.follower', '=', 'posts.user_id')
         ->join('users', 'users.id', '=', 'posts.user_id')
         ->where('follows.follow', '=', Auth::user()->id)
+        ->select('users.images', 'users.username', 'posts.posts','posts.created_at as created_at')
         ->get();
 
         return view('follows.followerList', compact('followers','posts'));

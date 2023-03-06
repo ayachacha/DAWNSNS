@@ -21,6 +21,7 @@
   <!-- UsersController.phpから受け取った$usersを使う -->
   @foreach($users as $user)
   <tr>
+    <td><a class="icon-image"><img src="{{asset('storage/'. $user->images)}}" alt="アイコン画像"></a></td>
     <td>{{ $user->username }}</td>
   </tr>
   <!-- もし$auth（ログイン者のID）とユーザーのIDが同じだったら、ボタンを表示しないようにする -->
@@ -33,7 +34,7 @@
         <!-- POST送信したいときはformタグ inputのname属性のものが変数として$requestに送られていく-->
         @csrf
         <input type="hidden" value="{{$user->id}}" name="id">
-        <input type="submit" value="フォローをはずす">
+        <input class="submit-btn-out" type="submit" value="フォローをはずす">
       </form>
     </td>
   </tr>
@@ -44,7 +45,7 @@
       <form action="/follow/create" method="POST">
         @csrf
         <input type="hidden" value="{{$user->id}}" name="id">
-        <input type="submit" value="フォローする">
+        <input class="submit-btn-in" type="submit" value="フォローする">
       </form>
     </td>
   </tr>

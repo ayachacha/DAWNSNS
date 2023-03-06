@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="ページの内容を表す文章" />
     <title></title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <!--スマホ,タブレット対応-->
+    <link rel="stylesheet" href="{{asset('css/reset.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <!--サイトのアイコン指定-->
     <link rel="icon" href="画像URL" sizes="16x16" type="image/png" />
@@ -22,23 +22,22 @@
 <body>
     <header>
         <div id = "head">
-        <h1><a href="/top"><img src="images/main_logo.png"></a></h1>
-            <div id="">
-                <div id="menu-btn">
-                    @if (Auth::check())
-                    <span class="header-username">{{ Auth::user()->username }}さん</span>
-                    <span class="header-arrow"></span>
-                    <img src="{{ asset('/storage/' . Auth::user()->images) }}">
-                    @endif
+            <div class="header-container">
+                <h1><a href="/top"><img src="{{asset('images/main_logo.png')}}"></a></h1>
+                <div class="accordion-menu">
+                @if (Auth::check())
+                    <p class="accordion-open">{{ Auth::user()->username }}さん<a class="icon-image"><img src="{{ asset('/storage/' . Auth::user()->images) }}"></a></p>
+                    <nav class="accordion-content">
+                        <ul class="accordion-lists">
+                            <li class="accordion-list"><a href="/top">HOME</a></li>
+                            <li class="accordion-list"><a href="/profile">プロフィール編集</a></li>
+                            <li class="accordion-list"><a href="/logout">ログアウト</a></li>
+                        </ul>
+                    </nav>
                 </div>
-                <nav class="menu">
-                    <ul>
-                        <li><a href="/top">ホーム</a></li>
-                        <li><a href="/profile">プロフィール</a></li>
-                        <li><a href="/logout">ログアウト</a></li>
-                    </ul>
-                </nav>
+                @endif
             </div>
+
         </div>
     </header>
 
@@ -49,14 +48,14 @@
         <div id="side-bar">
             <div id="confirm">
                 <p>{{ Auth::user()->username }}さんの</p>
-                <div>
+                <div class="follow-number">
                 <p>フォロー数</p>
-                <p>〇〇名</p>
+                <p>{{ $followCount }}名</p>
                 </div>
                 <p class="btn"><a href="/follow-list">フォローリスト</a></p>
-                <div>
+                <div class="follow-number">
                 <p>フォロワー数</p>
-                <p>〇〇名</p>
+                <p>{{ $followerCount }}名</p>
                 </div>
                 <p class="btn"><a href="/follower-list">フォロワーリスト</a></p>
             </div>
@@ -65,7 +64,7 @@
     </div>
     <footer>
     </footer>
-    <script src="JavaScriptファイルのURL"></script>
-    <script src="JavaScriptファイルのURL"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('js/accordion.js') }}"></script>
 </body>
 </html>
