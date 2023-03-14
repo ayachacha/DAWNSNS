@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use DB;
+use App\User;
+use App\Post;
+use App\Follow;
 
 class RegisterController extends Controller
 {
@@ -91,12 +95,14 @@ class RegisterController extends Controller
             $data = $request->input();
             $this->Validator($data);
             $this->create($data);
+            session()->put('test', $data['username']);
             return redirect('added');
         }
         return view('auth.register');
     }
 
     public function added(){
-        return view('auth.added');
+        $user = session()->get('test');
+        return view('auth.added', compact('user'));
     }
 }

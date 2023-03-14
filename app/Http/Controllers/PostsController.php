@@ -62,5 +62,13 @@ class PostsController extends Controller
 
     }
 
+    public function test(Request $request){
+        $userPosts = DB::table('posts')
+            ->where('user_id', Auth::id())
+            ->get();
+
+        return view('posts.test', compact('userPosts'));
+    }
+
 
 }
